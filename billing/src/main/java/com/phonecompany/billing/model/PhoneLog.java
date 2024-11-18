@@ -5,6 +5,7 @@ import com.phonecompany.billing.impl.promo.PromoEvent;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 public class PhoneLog {
     private PromoEvent promoEvent;
@@ -32,4 +33,16 @@ public class PhoneLog {
         return phoneCalls;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PhoneLog phoneLog = (PhoneLog) o;
+        return Objects.equals(promoEvent, phoneLog.promoEvent) && Objects.equals(phoneCalls, phoneLog.phoneCalls);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(promoEvent, phoneCalls);
+    }
 }
